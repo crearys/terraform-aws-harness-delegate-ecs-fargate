@@ -1,3 +1,6 @@
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
 locals {
   runner_config = var.base64_runner_config != "" ? var.base64_runner_config : var.runner_config != "" ? base64encode(var.runner_config) : ""
   delegate_environment = concat([
