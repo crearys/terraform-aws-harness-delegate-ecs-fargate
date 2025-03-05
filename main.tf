@@ -188,6 +188,7 @@ resource "aws_iam_role_policy_attachment" "task_execution_registry" {
 
 resource "aws_iam_role" "task" {
   name = "${var.name}-ecsTaskRole"
+  permissions_boundary = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/AdministratorAccessPermissionBoundary"
 
   assume_role_policy = <<EOF
 {
