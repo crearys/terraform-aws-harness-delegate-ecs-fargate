@@ -103,7 +103,7 @@ resource "aws_ecs_cluster" "this" {
 
 resource "aws_iam_role" "task_execution" {
   name = "harness-delegate-${var.name}-ecsTaskExecutionRole"
-
+  permissions_boundary = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/AdministratorAccessPermissionBoundary"
   assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
